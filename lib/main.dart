@@ -57,26 +57,36 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: Consumer(
           builder: (context, TransactionProvider provider, Widget? child) {
-            return ListView.builder(
-                itemCount: provider.transactions.length,
-                itemBuilder: (context, int index) {
-                  Transaction data = provider.transactions[index];
-                  return Card(
-                    elevation: 5,
-                    margin:
-                        const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
-                    child: ListTile(
-                      leading: CircleAvatar(
-                        radius: 30,
-                        child: FittedBox(
-                          child: Text(data.amount.toString()),
+            var count = provider.transactions.length;
+            if (count <= 0) {
+              return Center(
+                child: Text(
+                  "ไม่พบข้อมูล",
+                  style: TextStyle(fontSize: 35),
+                ),
+              );
+            } else {
+              return ListView.builder(
+                  itemCount: count,
+                  itemBuilder: (context, int index) {
+                    Transaction data = provider.transactions[index];
+                    return Card(
+                      elevation: 5,
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 5),
+                      child: ListTile(
+                        leading: CircleAvatar(
+                          radius: 30,
+                          child: FittedBox(
+                            child: Text(data.amount.toString()),
+                          ),
                         ),
+                        title: Text(data.title),
+                        subtitle: Text(data.date.toString()),
                       ),
-                      title: Text(data.title),
-                      subtitle: Text(data.date.toString()),
-                    ),
-                  );
-                });
+                    );
+                  });
+            }
           },
         ));
   }
