@@ -1,15 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_application_1/models/Transaction.dart';
+import 'package:flutter_application_1/database/transaction_db.dart';
+import 'package:flutter_application_1/models/Transactions.dart';
 
 class TransactionProvider with ChangeNotifier {
-  List<Transaction> transactions = [];
+  List<Transactions> transactions = [];
 
-  List<Transaction> getTransaction() {
+  List<Transactions> getTransaction() {
     return transactions;
   }
 
-  void addTrasaction(Transaction statement) {
+  void addTrasaction(statement) {
+    var db = TransactionDB(dbName: "Transactions.db").openDatabase();
+    print(db);
+
     transactions.insert(0, statement);
 
     notifyListeners();
