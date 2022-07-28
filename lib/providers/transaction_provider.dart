@@ -11,9 +11,10 @@ class TransactionProvider with ChangeNotifier {
   }
 
   void addTrasaction(statement) {
-    var db = TransactionDB(dbName: "Transactions.db").openDatabase();
-    print(db);
-
+    //var db = TransactionDB(dbName: "Transactions.db").openDatabase();
+    //print(db);
+    var db = TransactionDB(dbName: "Transaction.db");
+    db.InsertData(statement);
     transactions.insert(0, statement);
 
     notifyListeners();

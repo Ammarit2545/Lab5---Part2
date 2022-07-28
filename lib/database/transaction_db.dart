@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter_application_1/models/Transactions.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/foundation.dart';
@@ -16,8 +17,20 @@ class TransactionDB {
     //Make DBMS
 
     DatabaseFactory dbFactory = await databaseFactoryIo;
-    Future<Database> db = await dbFactory.openDatabase(dbLacation);
-
+    Database db = await dbFactory.openDatabase(dbLacation);
     return db;
+  }
+
+  InsertData(Transactions statement) async {
+    //DBMS  => STORE
+    var db = await this.openDatabase();
+    var store = intMapStoreFactory.store("Expense");
+    //JSON
+
+    store.add(db, {
+      "title"statement.title,
+      "amount":statement.amount,
+      "date":statement.date
+    });
   }
 }
