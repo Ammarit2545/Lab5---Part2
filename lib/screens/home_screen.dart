@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
@@ -23,11 +24,9 @@ class _MyWidgetState extends State<HomeSccreen> {
           title: Text("แอพบัญชี"),
           actions: [
             IconButton(
-                icon: Icon(Icons.add),
+                icon: Icon(Icons.exit_to_app),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return FormScreen();
-                  }));
+                  SystemNavigator.pop();
                 })
           ],
         ),
