@@ -11,7 +11,7 @@ class TransactionDB {
 
   TransactionDB({required this.dbName});
 
-  Future<String> openDatabase() async {
+  Future<Database> openDatabase() async {
     Directory appDirectory = await getApplicationDocumentsDirectory();
     String dbLacation = join(appDirectory.path, dbName);
     //Make DBMS
@@ -24,13 +24,15 @@ class TransactionDB {
   InsertData(Transactions statement) async {
     //DBMS  => STORE
     var db = await this.openDatabase();
-    var store = intMapStoreFactory.store("Expense");
+    var store = await intMapStoreFactory.store("Expense");
     //JSON
 
-    store.add(db, {
-      "title"statement.title,
-      "amount":statement.amount,
-      "date":statement.date
+    var keyID = store.add(db, {
+      "title": statement.title,
+      "amount": statement.amount,
+      "date": statement.date.toIso8601String()
     });
+    db.close();
+    return keyID;
   }
 }
