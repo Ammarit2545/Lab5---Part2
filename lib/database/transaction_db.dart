@@ -44,6 +44,8 @@ class TransactionDB {
     var store = await intMapStoreFactory.store("Expense");
     var snapshot = await store.find(db,
         finder: Finder(sortOrders: [SortOrder(Field.key, false)]));
+
+    return loadAllData();
     /* List transactionList =  List<Transactions>();
 
     for (var record in snapshot) {
