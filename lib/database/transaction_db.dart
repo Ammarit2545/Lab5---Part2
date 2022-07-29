@@ -42,7 +42,8 @@ class TransactionDB {
   Future<List<Transactions>> loadAllData() async {
     var db = await this.openDatabase();
     var store = await intMapStoreFactory.store("Expense");
-    var snapshot = await store.find(db);
+    var snapshot = await store.find(db,
+        finder: Finder(sortOrders: [SortOrder(Field.key, false)]));
     /* List transactionList =  List<Transactions>();
 
     for (var record in snapshot) {
