@@ -1,10 +1,13 @@
 import 'dart:io';
 import 'package:flutter_application_1/models/Transactions.dart';
+import 'package:flutter_application_1/models/Transactions.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:sembast/sembast.dart';
 import 'package:sembast/sembast_io.dart';
+
+import '../models/Transactions.dart';
 
 class TransactionDB {
   String dbName;
@@ -36,11 +39,23 @@ class TransactionDB {
     return keyID;
   }
 
-  Future<bool> loadAllData() async {
+  Future<List<Transactions>> loadAllData() async {
     var db = await this.openDatabase();
     var store = await intMapStoreFactory.store("Expense");
     var snapshot = await store.find(db);
-    print(snapshot);
-    return true;
+    /* List transactionList =  List<Transactions>();
+
+    for (var record in snapshot) {
+      transactionList.add(
+        Transactions(
+          title: record["title"],
+          amount: record["amount"],
+          date: DateTime.parse(record["date"])
+          )
+      );
+    }
+
+   // print(snapshot);
+    return transactionList;*/
   }
 }
