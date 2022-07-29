@@ -56,6 +56,12 @@ class _MyHomePageState extends State<MyHomePage> {
           body: TabBarView(
             children: [HomeSccreen(), FormScreen()],
           ),
+          bottomNavigationBar: TabBar(
+            tabs: [
+              Tab(icon: Icon(Icons.list), text: "รายการธุรกรรม"),
+              Tab(icon: Icon(Icons.add), text: "เพิ่มข้อมูล")
+            ],
+          ),
         ));
   }
 }

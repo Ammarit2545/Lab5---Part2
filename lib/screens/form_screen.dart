@@ -2,8 +2,11 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/main.dart';
 import 'package:flutter_application_1/models/Transactions.dart';
 import 'package:flutter_application_1/providers/transaction_provider.dart';
+import 'package:flutter_application_1/screens/home_screen.dart';
+import 'package:path/path.dart';
 import 'package:provider/provider.dart';
 
 class FormScreen extends StatelessWidget {
@@ -27,7 +30,7 @@ class FormScreen extends StatelessWidget {
                 children: [
                   TextFormField(
                     decoration: new InputDecoration(labelText: "ชื่อรายการ"),
-                    autofocus: true,
+                    autofocus: false,
                     controller: titleController,
                     validator: (String? str) {
                       if (str!.isEmpty) {
@@ -67,7 +70,13 @@ class FormScreen extends StatelessWidget {
                         var provider = Provider.of<TransactionProvider>(context,
                             listen: false);
                         provider.addTrasaction(statement);
-                        Navigator.pop(context);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                fullscreenDialog: true,
+                                builder: (context) {
+                                  return MyHomePage();
+                                }));
                       }
                     },
                   )
