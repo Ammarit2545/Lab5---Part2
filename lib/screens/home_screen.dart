@@ -21,7 +21,7 @@ class _MyWidgetState extends State<HomeSccreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("แอพบัญชี"),
+          title: Text("Bunshee"),
           actions: [
             IconButton(
                 icon: Icon(Icons.exit_to_app),

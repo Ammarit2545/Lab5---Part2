@@ -22,11 +22,11 @@ class MyApp extends StatelessWidget {
         }),
       ],
       child: MaterialApp(
-        title: 'แอพบัญชี',
+        title: 'Bunshee',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.red,
         ),
-        home: const MyHomePage(title: 'บัญชี'),
+        home: const MyHomePage(title: 'Bunshee'),
       ),
     );
   }
@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return DefaultTabController(
         length: 2,
         child: Scaffold(
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.purple,
           body: TabBarView(
             children: [HomeSccreen(), FormScreen()],
           ),
