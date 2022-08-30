@@ -52,14 +52,14 @@ class _MyHomePageState extends State<MyHomePage> {
     return DefaultTabController(
         length: 2,
         child: Scaffold(
-          backgroundColor: Colors.purple,
+          backgroundColor: Colors.blue,
           body: TabBarView(
             children: [FormScreen(), HomeSccreen()],
           ),
           bottomNavigationBar: TabBar(
             tabs: [
-              Tab(icon: Icon(Icons.list), text: "รายการธุรกรรม"),
-              Tab(icon: Icon(Icons.add), text: "เพิ่มข้อมูล")
+              Tab(icon: Icon(Icons.list), text: "Normal"),
+              Tab(icon: Icon(Icons.add), text: "Advance")
             ],
           ),
         ));
